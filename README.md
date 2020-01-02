@@ -1,6 +1,7 @@
 # instagram_clone
 
-A nclone of instagram
+A clone of instagram, copy of the project of Marcus NG on youtube that is building this instagram
+clone on his channel...
 
 ## Getting Started
 
