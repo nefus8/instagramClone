@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/pages/signup_page.dart';
 
-class LoginPage extends StatefulWidget {
-
-  static final String id = 'login_page';
+class SignupPage extends StatefulWidget {
+  static final String id = 'signup_page';
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String _name, _email, _password;
 
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-    print(_email);
-    print(_password);
+      print(_email);
+      print(_password);
+      print(_name);
     }
   }
 
@@ -40,6 +39,17 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Nom',
+                        ),
+                        keyboardType: TextInputType.text,
+                        validator: (input) => input.trim().isEmpty ? 'Entrez un nom' : null,
+                        onSaved: (input) => _email = input,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                       child: TextFormField(
@@ -67,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                       child: FlatButton(
                         onPressed: _submit,
                         color: Colors.blue,
-                        child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 18.0),),
+                        child: Text(
+                          'Créer',
+                          style: TextStyle(color: Colors.white, fontSize: 18.0),
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.0),
@@ -75,9 +88,12 @@ class _LoginPageState extends State<LoginPage> {
                       width: 250.0,
                       padding: EdgeInsets.all(10.0),
                       child: FlatButton(
-                        onPressed: () => Navigator.pushNamed(context, SignupPage.id),
+                        onPressed: () => Navigator.pop(context),
                         color: Colors.blue,
-                        child: Text('Créer un compte', style: TextStyle(color: Colors.white, fontSize: 18.0),),
+                        child: Text(
+                          'Retour au login',
+                          style: TextStyle(color: Colors.white, fontSize: 18.0),
+                        ),
                       ),
                     )
                   ],

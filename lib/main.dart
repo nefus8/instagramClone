@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/pages/login_page.dart';
-import 'package:instagram_clone/pages/sign_up_page.dart';
+import 'package:instagram_clone/pages/signup_page.dart';
 
 void main() => runApp(MyApp());
 
