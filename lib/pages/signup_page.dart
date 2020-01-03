@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/services/auth_service.dart';
 
 class SignupPage extends StatefulWidget {
   static final String id = 'signup_page';
@@ -14,9 +15,7 @@ class _SignupPageState extends State<SignupPage> {
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(_email);
-      print(_password);
-      print(_name);
+      AuthService.signUpUser(context, _name, _email, _password);
     }
   }
 
@@ -47,7 +46,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         keyboardType: TextInputType.text,
                         validator: (input) => input.trim().isEmpty ? 'Entrez un nom' : null,
-                        onSaved: (input) => _email = input,
+                        onSaved: (input) => _name = input,
                       ),
                     ),
                     Padding(
@@ -65,7 +64,7 @@ class _SignupPageState extends State<SignupPage> {
                       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                       child: TextFormField(
                         decoration: InputDecoration(labelText: 'Mot de passe'),
-                        validator: (input) => input.length <= 6 ? 'Doit contenir au moins six caractères' : null,
+                        validator: (input) => input.length <= 5 ? 'Doit contenir au moins six caractères' : null,
                         onSaved: (input) => _password = input,
                         obscureText: true,
                       ),
